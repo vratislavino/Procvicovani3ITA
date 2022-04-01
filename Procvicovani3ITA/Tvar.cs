@@ -14,6 +14,26 @@ namespace Procvicovani3ITA
         protected Pen outlineColor;
         protected Brush color;
 
+        protected bool highlighted = true;
+        public bool Highlighted
+        {
+            get { return highlighted; }
+            set { highlighted = value; }
+        }
+
+        private static Pen highlightOutlineColor = new Pen(Color.Orange, 3f);
+        private static Brush highlightColor = new SolidBrush(Color.Yellow);
+
+        public Pen CurrentOutlineColor
+        {
+            get { return highlighted ? highlightOutlineColor : outlineColor; }
+        }
+
+        public Brush CurrentColor
+        {
+            get { return highlighted ? highlightColor : color; }
+        }
+
         public int X => position.X;
         public int Y => position.Y;
 

@@ -17,13 +17,15 @@ namespace Procvicovani3ITA
 
         public override void Draw(Graphics g)
         {
-            g.FillRectangle(color, position.X, position.Y, Width, Height);
-            g.DrawRectangle(outlineColor, position.X, position.Y, Width, Height);
+
+            g.FillRectangle(CurrentColor, position.X, position.Y, Width, Height);
+            g.DrawRectangle(CurrentOutlineColor, position.X, position.Y, Width, Height);
         }
 
         public override bool IsMouseOverObject(Point mousePos)
         {
-            return false;
+            return mousePos.X > X && mousePos.X < X+Width && 
+                   mousePos.Y > Y && mousePos.Y < Y+Height;
         }
     }
 }

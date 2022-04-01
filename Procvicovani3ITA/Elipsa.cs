@@ -17,13 +17,17 @@ namespace Procvicovani3ITA
 
         public override void Draw(Graphics g)
         {
-            g.FillEllipse(color, position.X, position.Y, Width, Height);
-            g.DrawEllipse(outlineColor, position.X, position.Y, Width, Height);
+            g.FillEllipse(CurrentColor, position.X, position.Y, Width, Height);
+            g.DrawEllipse(CurrentOutlineColor, position.X, position.Y, Width, Height);
         }
 
         public override bool IsMouseOverObject(Point mousePos)
         {
-            return false;
+            int cx = X + Width / 2;
+            int cy = Y + Height / 2;
+
+            return (Math.Pow(mousePos.X - cx, 2) / Math.Pow(Width / 2, 2) +
+                   Math.Pow(mousePos.Y - cy, 2) / Math.Pow(Height / 2, 2)) < 1;
         }
     }
 }

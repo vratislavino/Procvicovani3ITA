@@ -18,11 +18,33 @@ namespace Procvicovani3ITA
         List<Tvar> shapes = new List<Tvar>();
         Tvar currentShape = null;
         Tvar lastHighlightedShape = null;
+        private Tvar LastHighlightedShape { 
+            get { return lastHighlightedShape; }
+            set
+            {
+                lastHighlightedShape = value;
+                tvarProperties1.Tvar = lastHighlightedShape;
+            }
+        }
+
 
         public Form1()
         {
             InitializeComponent();
             shouldDraw = drawCheckbox.Checked;
+            tvarProperties1.SendDownRequested += () => {
+                int index = shapes.IndexOf(lastHighlightedShape);
+                index--;
+                if (index < 0)
+                    index = 0;
+
+                shapes.Remove(lastHighlightedShape);
+                shapes.Insert(index, lastHighlightedShape);
+                canvas1.Refresh();
+            };
+            tvarProperties1.SendUpRequested += () => { 
+                // TODO: dodělat posun nahoru
+            };
         }
 
         private void drawCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -101,19 +123,19 @@ namespace Procvicovani3ITA
                 if(shapes[i].IsMouseOverObject(mousePos))
                 {
 
-                    if (lastHighlightedShape != null)
-                        lastHighlightedShape.Highlighted = false;
+                    if (LastHighlightedShape != null)
+                        LastHighlightedShape.Highlighted = false;
 
                     shapes[i].Highlighted = true;
-                    lastHighlightedShape = shapes[i];
+                    LastHighlightedShape = shapes[i];
                     //currentShape = shapes[i];
                     return;
                 }
             }
-            if (lastHighlightedShape != null)
+            if (LastHighlightedShape != null)
             {
-                lastHighlightedShape.Highlighted = false;
-                lastHighlightedShape = null;
+                LastHighlightedShape.Highlighted = false;
+                LastHighlightedShape = null;
             }
         }
     }

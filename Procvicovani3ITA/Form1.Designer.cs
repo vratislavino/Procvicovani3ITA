@@ -30,13 +30,14 @@
         {
             this.drawCheckbox = new System.Windows.Forms.CheckBox();
             this.canvas1 = new Procvicovani3ITA.Canvas();
+            this.tvarProperties1 = new Procvicovani3ITA.TvarProperties();
             this.SuspendLayout();
             // 
             // drawCheckbox
             // 
             this.drawCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.drawCheckbox.AutoSize = true;
-            this.drawCheckbox.Location = new System.Drawing.Point(862, 612);
+            this.drawCheckbox.Location = new System.Drawing.Point(1134, 612);
             this.drawCheckbox.Name = "drawCheckbox";
             this.drawCheckbox.Size = new System.Drawing.Size(65, 17);
             this.drawCheckbox.TabIndex = 0;
@@ -58,11 +59,21 @@
             this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
             this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
             // 
+            // tvarProperties1
+            // 
+            this.tvarProperties1.Location = new System.Drawing.Point(936, 12);
+            this.tvarProperties1.Name = "tvarProperties1";
+            this.tvarProperties1.Size = new System.Drawing.Size(260, 503);
+            this.tvarProperties1.TabIndex = 2;
+            this.tvarProperties1.Tvar = null;
+            this.tvarProperties1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 648);
+            this.ClientSize = new System.Drawing.Size(1215, 648);
+            this.Controls.Add(this.tvarProperties1);
             this.Controls.Add(this.canvas1);
             this.Controls.Add(this.drawCheckbox);
             this.Name = "Form1";
@@ -76,6 +87,7 @@
 
         private System.Windows.Forms.CheckBox drawCheckbox;
         private Canvas canvas1;
+        private TvarProperties tvarProperties1;
     }
 }
 
